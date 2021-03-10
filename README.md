@@ -7,8 +7,11 @@ Il metodo di equalizzazione dell’istogramma di una immagine è un metodo pensa
 Nella versione da sviluppare non è richiesta l’implementazione dell’algoritmo standard ma di una sua versione semplificata. L’algoritmo di equalizzazione sarà applicato solo ad immagini in scala di grigi a 256 livelli e deve trasformare ogni suo pixel nel modo seguente:
 
 > DELTA_VALUE = MAX_PIXEL_VALUE – MIN_PIXEL_VALUE 
+>
 > SHIFT_LEVEL = (8 – FLOOR(LOG2(DELTA_VALUE +1)))) 
+> 
 > TEMP_PIXEL = (CURRENT_PIXEL_VALUE - MIN_PIXEL_VALUE) << SHIFT_LEVEL 
+> 
 > NEW_PIXEL_VALUE = MIN( 255 , TEMP_PIXEL)
 
 Dove MAX_PIXEL_VALUE e MIN_PIXEL_VALUE, sono il massimo e minimo valore dei pixel dell’immagine, CURRENT_PIXEL_VALUE è il valore del pixel da trasformare, e NEW_PIXEL_VALUE è il valore del nuovo pixel.
@@ -30,17 +33,29 @@ Le dimensioni dell’immagine, ciascuna di dimensione di 8 bit, sono memorizzati
 Il componente da descrivere deve avere la seguente interfaccia. 
 
 > entity project_reti_logiche is 
+> 
 > port ( 
+> 
 > i_clk     : in std_logic;  
+> 
 > i_rst     : in std_logic;  
-> i_start   : in std_logic;  
-> i_data    : in std_logic_vector(7 downto 0);  
-> o_address : out std_logic_vector(15 downto 0);  
+> 
+> i_start   : in std_logic; 
+>  
+> i_data    : in std_logic_vector(7 downto 0); 
+>  
+> o_address : out std_logic_vector(15 downto 0); 
+>  
 > o_done    : out std_logic;  
+> 
 > o_en      : out std_logic;  
+> 
 > o_we      : out std_logic;  
+> 
 > o_data    : out std_logic_vector (7 downto 0) 
+> 
 > ); 
+> 
 > end project_reti_logiche; 
 
 In particolare:
