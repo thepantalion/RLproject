@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Tue Jul 27 01:26:07 2021
+# Process ID: 14512
+# Current directory: C:/Users/panta/Reti Logiche/RLproject/project_reti_logiche/project_reti_logiche.runs/synth_1
+# Command line: vivado.exe -log project_reti_logiche.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source project_reti_logiche.tcl
+# Log file: C:/Users/panta/Reti Logiche/RLproject/project_reti_logiche/project_reti_logiche.runs/synth_1/project_reti_logiche.vds
+# Journal file: C:/Users/panta/Reti Logiche/RLproject/project_reti_logiche/project_reti_logiche.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source project_reti_logiche.tcl -notrace

@@ -1,0 +1,8 @@
+Time resolution is 1 ps
+Note: Initialized
+Time: 67500 ps  Iteration: 1  Process: /project_tb/UUT/line__32  File: C:/Users/panta/Reti Logiche/RLproject/project_reti_logiche/project_reti_logiche.srcs/sources_1/new/project_reti_logiche.vhd
+Note: Initialized
+Time: 1717500 ps  Iteration: 1  Process: /project_tb/UUT/line__32  File: C:/Users/panta/Reti Logiche/RLproject/project_reti_logiche/project_reti_logiche.srcs/sources_1/new/project_reti_logiche.vhd
+Failure: TEST FALLITO (WORKING ZONE). Expected  0  found 40
+Time: 1802500 ps  Iteration: 0  Process: /project_tb/test  File: C:/Users/panta/Reti Logiche/RLproject/project_reti_logiche/project_reti_logiche.srcs/sources_1/new/testbench.vhd
+$finish called at time : 1802500 ps : File "C:/Users/panta/Reti Logiche/RLproject/project_reti_logiche/project_reti_logiche.srcs/sources_1/new/testbench.vhd" Line 117
