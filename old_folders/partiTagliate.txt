@@ -1,0 +1,103 @@
+----------------------------------------------------
+        start_state : process(state) is
+        begin
+            if state = START then
+                for i in 7 downto 0 loop
+                   N_COL(i) <= i_data(i);
+                end loop;
+                
+                
+                
+                
+            end if;
+        end process;
+        ---------------------------------------------------
+
+
+
+
+old_start: process(state)
+        begin
+            case State is
+                   
+                        when RESET =>
+                            if i_start ='1' then
+                                State <= START;
+                            else 
+                                State <= WAITING;
+                            end if;
+                          
+                         when WAITING =>
+                            if i_start ='1' then
+                                State <= START;
+                            end if;
+                            
+                         when START =>
+                                   N_COL <= i_data;
+                               state <= COLONSAVE;
+                               
+                          when COLONSAVE =>
+                               for i in 7 downto 0 loop
+                                   N_RIG(i) <= i_data(i);
+                               end loop;
+                               State <= RIGHESAVE;
+                            
+                          when RIGHESAVE =>
+                                ---Troppe cose con cui mi devo confrontare con Panta quindi per ora challo bye
+                               State <= IMGSAVE;
+
+                                
+                          when IMGSAVE =>
+                               DELTA_VALUE <= MAX_PIXEL_VALUE-MIN_PIXEL_VALUE;
+                               
+                               --andrebbe controllato DV+1 ma visto che devo imporre delle condizioni diminuisco di 1 sui controllo di quest'ultime
+                               if DELTA_VALUE = "00000000" then
+                                        SHIFT_LEVEL <= "1000";
+                               elsif  (DELTA_VALUE="00000001" or DELTA_VALUE="00000010") then
+                                        SHIFT_LEVEL <= "0111";
+                               elsif  (DELTA_VALUE>="00000011" or DELTA_VALUE<="00000110") then
+                                        SHIFT_LEVEL <= "0110";
+                               elsif  (DELTA_VALUE>="00000111" or DELTA_VALUE<="00001110") then
+                                        SHIFT_LEVEL <= "0101";
+                               elsif  (DELTA_VALUE>="00001111" or DELTA_VALUE<="00011110") then
+                                        SHIFT_LEVEL <= "0100";                                                                        
+                               elsif  (DELTA_VALUE>="00011111" or DELTA_VALUE<="00111110") then
+                                        SHIFT_LEVEL <= "0011";
+                               elsif  (DELTA_VALUE>="00111111" or DELTA_VALUE<="01111110") then
+                                        SHIFT_LEVEL <= "0010";                               
+                               elsif  (DELTA_VALUE>="01111111" or DELTA_VALUE<="11111110") then
+                                        SHIFT_LEVEL <= "0001";  
+                               elsif  DELTA_VALUE="11111111" then
+                                        SHIFT_LEVEL <= "0000";                                                               
+                               else SHIFT_LEVEL <= "XXXX";
+                               end if;
+                end case;
+        end process;
+
+
+
+next_stato_function_old : process(i_clk) is
+        begin
+            if rising_edge(i_clk) then
+                if i_rst = '1' then
+                    stato <= RESET;
+                else
+                    case stato is
+                        when RESET =>
+                            stato <= WAITING;
+                        when WAITING =>
+                            stato <= START;                    
+                        when START =>
+                            stato <= LOCALSAVE;
+                        when LOCALSAVE =>
+                            stato <= DELTASHIFT;                       
+                        when DELTASHIFT =>
+                            stato <= LOCALLOAD;
+                        when LOCALLOAD =>
+                            stato <= DONE;
+                        when DONE =>
+                            stato <= WAITING;
+                    end case;
+                end if;
+            end if;
+        end process;

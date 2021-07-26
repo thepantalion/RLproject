@@ -1,0 +1,6 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../project_basicstuff.srcs/sources_1/new/T01_HelloWorldTB.vhd" \
+
+# Do not sort compile order
+nosort

@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Mon Jul 26 14:20:24 2021
+# Process ID: 13308
+# Current directory: E:/Progetto di Reti Logiche/project_rl
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent13264 E:\Progetto di Reti Logiche\project_rl\project_rl.xpr
+# Log file: E:/Progetto di Reti Logiche/project_rl/vivado.log
+# Journal file: E:/Progetto di Reti Logiche/project_rl\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {E:/Progetto di Reti Logiche/project_rl/project_rl.xpr}
+update_compile_order -fileset sources_1

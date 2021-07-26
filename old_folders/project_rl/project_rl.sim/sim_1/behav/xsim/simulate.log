@@ -1,0 +1,39 @@
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+Note: initialized
+Time: 142500 ps  Iteration: 1  Process: /project_tb/UUT/line__40  File: E:/Progetto di Reti Logiche/project_rl/project_rl.srcs/sources_1/new/project_reti_logiche.vhd
+Note: initialized
+Time: 1567500 ps  Iteration: 1  Process: /project_tb/UUT/line__40  File: E:/Progetto di Reti Logiche/project_rl/project_rl.srcs/sources_1/new/project_reti_logiche.vhd
+Note: initialized
+Time: 2962500 ps  Iteration: 1  Process: /project_tb/UUT/line__40  File: E:/Progetto di Reti Logiche/project_rl/project_rl.srcs/sources_1/new/project_reti_logiche.vhd
+Note: initialized
+Time: 4357500 ps  Iteration: 1  Process: /project_tb/UUT/line__40  File: E:/Progetto di Reti Logiche/project_rl/project_rl.srcs/sources_1/new/project_reti_logiche.vhd
+Note: initialized
+Time: 5752500 ps  Iteration: 1  Process: /project_tb/UUT/line__40  File: E:/Progetto di Reti Logiche/project_rl/project_rl.srcs/sources_1/new/project_reti_logiche.vhd
+Note: initialized
+Time: 7147500 ps  Iteration: 1  Process: /project_tb/UUT/line__40  File: E:/Progetto di Reti Logiche/project_rl/project_rl.srcs/sources_1/new/project_reti_logiche.vhd
+Note: initialized
+Time: 8542500 ps  Iteration: 1  Process: /project_tb/UUT/line__40  File: E:/Progetto di Reti Logiche/project_rl/project_rl.srcs/sources_1/new/project_reti_logiche.vhd
+Note: initialized
+Time: 9937500 ps  Iteration: 1  Process: /project_tb/UUT/line__40  File: E:/Progetto di Reti Logiche/project_rl/project_rl.srcs/sources_1/new/project_reti_logiche.vhd
+Note: initialized
+Time: 11332500 ps  Iteration: 1  Process: /project_tb/UUT/line__40  File: E:/Progetto di Reti Logiche/project_rl/project_rl.srcs/sources_1/new/project_reti_logiche.vhd
+Note: initialized
+Time: 12727500 ps  Iteration: 1  Process: /project_tb/UUT/line__40  File: E:/Progetto di Reti Logiche/project_rl/project_rl.srcs/sources_1/new/project_reti_logiche.vhd
+Note: initialized
+Time: 14122500 ps  Iteration: 1  Process: /project_tb/UUT/line__40  File: E:/Progetto di Reti Logiche/project_rl/project_rl.srcs/sources_1/new/project_reti_logiche.vhd
+Note: initialized
+Time: 15517500 ps  Iteration: 1  Process: /project_tb/UUT/line__40  File: E:/Progetto di Reti Logiche/project_rl/project_rl.srcs/sources_1/new/project_reti_logiche.vhd
+Note: initialized
+Time: 16912500 ps  Iteration: 1  Process: /project_tb/UUT/line__40  File: E:/Progetto di Reti Logiche/project_rl/project_rl.srcs/sources_1/new/project_reti_logiche.vhd
+Note: initialized
+Time: 18307500 ps  Iteration: 1  Process: /project_tb/UUT/line__40  File: E:/Progetto di Reti Logiche/project_rl/project_rl.srcs/sources_1/new/project_reti_logiche.vhd
+Note: initialized
+Time: 19702500 ps  Iteration: 1  Process: /project_tb/UUT/line__40  File: E:/Progetto di Reti Logiche/project_rl/project_rl.srcs/sources_1/new/project_reti_logiche.vhd
+Note: initialized
+Time: 21097500 ps  Iteration: 1  Process: /project_tb/UUT/line__40  File: E:/Progetto di Reti Logiche/project_rl/project_rl.srcs/sources_1/new/project_reti_logiche.vhd
+Note: initialized
+Time: 22492500 ps  Iteration: 1  Process: /project_tb/UUT/line__40  File: E:/Progetto di Reti Logiche/project_rl/project_rl.srcs/sources_1/new/project_reti_logiche.vhd
+Failure: Simulation Ended! TEST PASSATO
+Time: 22562500 ps  Iteration: 0  Process: /project_tb/test  File: E:/Progetto di Reti Logiche/project_rl/project_rl.srcs/sources_1/new/tb.vhd
+$finish called at time : 22562500 ps : File "E:/Progetto di Reti Logiche/project_rl/project_rl.srcs/sources_1/new/tb.vhd" Line 646

@@ -1,0 +1,10 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "E:/Progetto di Reti Logiche/project_1/project_1.srcs/sources_1/imports/TB3/test_bench.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'project_tb_1'
+INFO: [VRFC 10-3107] analyzing entity 'project_tb_2'
+INFO: [VRFC 10-3107] analyzing entity 'project_tb_3'
+INFO: [VRFC 10-3107] analyzing entity 'project_tb_4'
+INFO: [VRFC 10-3107] analyzing entity 'project_tb_5'
+INFO: [VRFC 10-3107] analyzing entity 'project_tb_6'
+INFO: [VRFC 10-3107] analyzing entity 'project_tb_7'
+INFO: [VRFC 10-3107] analyzing entity 'project_tb_8'
+INFO: [VRFC 10-3107] analyzing entity 'project_tb_9'

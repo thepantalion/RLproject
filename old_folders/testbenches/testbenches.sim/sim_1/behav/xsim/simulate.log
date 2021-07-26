@@ -1,0 +1,11 @@
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+Note: initialized
+Time: 142500 ps  Iteration: 1  Process: /project_tb_9/UUT/line__40  File: E:/Progetto di Reti Logiche/testbenches/testbenches.srcs/sources_1/new/project_reti_logiche.vhd
+Note: initialized
+Time: 142500 ps  Iteration: 1  Process: /project_tb_9/UUT/line__40  File: E:/Progetto di Reti Logiche/testbenches/testbenches.srcs/sources_1/new/project_reti_logiche.vhd
+Note: initialized
+Time: 2467500 ps  Iteration: 1  Process: /project_tb_9/UUT/line__40  File: E:/Progetto di Reti Logiche/testbenches/testbenches.srcs/sources_1/new/project_reti_logiche.vhd
+Failure: Simulation Ended! TEST PASSATO
+Time: 2537500 ps  Iteration: 0  Process: /project_tb_9/test  File: E:/Progetto di Reti Logiche/testbenches/testbenches.srcs/sources_1/new/tb9.vhd
+$finish called at time : 2537500 ps : File "E:/Progetto di Reti Logiche/testbenches/testbenches.srcs/sources_1/new/tb9.vhd" Line 131
