@@ -1,6 +1,6 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
-use ieee.numeric_std.all;   -- libreria necessaria a rappresentare i numeri signed e unsigned
+use ieee.numeric_std.all;
 
 entity project_reti_logiche is
     port(
@@ -25,7 +25,6 @@ architecture rtl of project_reti_logiche is
     signal OverFlow, IsClean, synced : std_logic := '0';
     
     type t_state is (FIRST, RESET, WAITING, START, READCOL, READRIG, LOADTOT, MAXMIN, LOADDELTA, LOADSHIFT, CALCULATENEWVALUE, HASOVERFLOWED, WRITENEWVALUE, SYNC, DONE);
-
     signal state : t_state;
     
     begin
