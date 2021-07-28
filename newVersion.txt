@@ -1,4 +1,3 @@
-
 library IEEE;
 use IEEE.std_logic_1164.all;
 use ieee.numeric_std.all;   -- libreria necessaria a rappresentare i numeri signed e unsigned
@@ -38,7 +37,7 @@ architecture rtl of project_reti_logiche is
     
     begin
     
-        process(i_clk, synced)
+        process(i_clk)
         begin
             if rising_edge(i_clk) then
                 if i_rst = '1'  and isClean = '0' then
