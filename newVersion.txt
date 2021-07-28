@@ -1,6 +1,6 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
-use ieee.numeric_std.all;   -- libreria necessaria a rappresentare i numeri signed e unsigned
+use ieee.numeric_std.all;
 
 entity project_reti_logiche is
     port(
@@ -17,26 +17,17 @@ entity project_reti_logiche is
 end project_reti_logiche;
 
 architecture rtl of project_reti_logiche is
-    signal N_COL, N_RIG : unsigned(7 downto 0); --ora ho messo 7 devo chiedere a Pnata pervhè aveva messo 6
+    signal N_COL, N_RIG : unsigned(7 downto 0);
     signal COUNTER, J : unsigned(15 downto 0);
     signal DELTA_VALUE, MAX_PIXEL_VALUE, MIN_PIXEL_VALUE, TEMP_PIXEL, NEW_PIXEL_VALUE, CURRENT_PIXEL_VALUE, BEFORE_SHIFT : unsigned(7 downto 0);
-    signal TOT_PIXEL, K , TOT_PIXEL_ORIGINAL: unsigned(15 downto 0); -- totale di pixel da salvare/valutare (al massimo 16384 pixel = 128*128)
-    signal SHIFT_LEVEL: integer; -- deve essere intero per poter usare la funzione shift_ left
+    signal TOT_PIXEL, K , TOT_PIXEL_ORIGINAL: unsigned(15 downto 0);
+    signal SHIFT_LEVEL: integer;
     signal OverFlow, IsClean, synced : std_logic := '0';
-    --serve un process(start) che tenga sotto controllo il segnale START in attesa di poter partire
-    
-    --modo per dichiarare un tipo enumerato
-    -- RESET     -> stato di reset dove la FSM torna in seguito a i_rst = '1';
-    -- WAITING   -> FSM attende che i_start = '1';
-    -- START     -> è stato ricevuto i_start = '1' e rileva il numero di colonna e il numero di riga (una wait tra le due permette di leggere in sequenza)
-    -- LOCALSAVE -> conoscendo numero di righe/colonne, si salva un numero di byte in ram pari a n_col * n_rig;
-    --
+
     type t_state is (FIRST, RESET, WAITING, START, READCOL, READRIG, LOADTOT, MAXMIN, LOADDELTA, LOADSHIFT, CALCULATENEWVALUE, HASOVERFLOWED, WRITENEWVALUE, SYNC, DONE);
-             --continuo a creare l'FSA con questi stati, tuttavia credo che potremmo ridurne il numero
-    signal state : t_state; --questo segnale assume uno tra i valori indicati sopra
+    signal state : t_state;
     
     begin
-    
         process(i_clk)
         begin
             if rising_edge(i_clk) then
@@ -46,33 +37,33 @@ architecture rtl of project_reti_logiche is
             
                 if state = RESET then
                     if IsClean = '0' then
-                    N_COL <= (others => '0');
-                    N_RIG <= (others => '0');
-                    DELTA_VALUE <= (others => '0');
-                    MAX_PIXEL_VALUE <= (others => '0');
-                    MIN_PIXEL_VALUE <= (others => '1');
-                    TEMP_PIXEL <= (others => '0');
-                    NEW_PIXEL_VALUE <= (others => '0');
-                    CURRENT_PIXEL_VALUE <= (others => '0');
-                    COUNTER <= (others => '0');
-                    J <= (others => '0');
-                    TOT_PIXEL_ORIGINAL <= (others => '0');
-                    TOT_PIXEL <= (others => '0');
-                    SHIFT_LEVEL <= 0;
-                    K <= (others => '0');
-                    TOT_PIXEL <= (others => '0');
-                    BEFORE_SHIFT <= "00000000";
-                    o_en <= '0';
-                    o_we <= '0';
-                    o_done <= '0';
-                    o_address <= (others => '0');
-                    o_data <= (others => '0');
-                    
-                    synced <= '0';
-                    IsClean <= '1';
-                    report "initialized";
-                    
-                    state <= WAITING;
+                        N_COL <= (others => '0');
+                        N_RIG <= (others => '0');
+                        DELTA_VALUE <= (others => '0');
+                        MAX_PIXEL_VALUE <= (others => '0');
+                        MIN_PIXEL_VALUE <= (others => '1');
+                        TEMP_PIXEL <= (others => '0');
+                        NEW_PIXEL_VALUE <= (others => '0');
+                        CURRENT_PIXEL_VALUE <= (others => '0');
+                        COUNTER <= (others => '0');
+                        J <= (others => '0');
+                        TOT_PIXEL_ORIGINAL <= (others => '0');
+                        TOT_PIXEL <= (others => '0');
+                        SHIFT_LEVEL <= 0;
+                        K <= (others => '0');
+                        TOT_PIXEL <= (others => '0');
+                        BEFORE_SHIFT <= "00000000";
+                        o_en <= '0';
+                        o_we <= '0';
+                        o_done <= '0';
+                        o_address <= (others => '0');
+                        o_data <= (others => '0');
+                        
+                        synced <= '0';
+                        IsClean <= '1';
+                        report "initialized";
+                        
+                        state <= WAITING;
                     end if;
                 
                 elsif state = WAITING then
@@ -102,9 +93,11 @@ architecture rtl of project_reti_logiche is
                     else
                         N_COL <= unsigned(i_data);
                         state <= READRIG;
+                        
+                        o_address <= std_logic_vector(COUNTER);
                         COUNTER <= J + 1;
                         J <= COUNTER + 1;
-                        o_address <= std_logic_vector(COUNTER);
+                        
                         synced <= '0';
                     end if;
                 
@@ -125,9 +118,11 @@ architecture rtl of project_reti_logiche is
                         TOT_PIXEL <= (N_COL * N_RIG);
                         TOT_PIXEL_ORIGINAL <= (N_COL * N_RIG);
                         K <= (N_COL * N_RIG);
+                        
+                        o_address <= std_logic_vector(COUNTER);
                         COUNTER <= J + 1;
                         J <= COUNTER + 1;
-                        o_address <= std_logic_vector(COUNTER);
+                        
                         state <= MAXMIN;
                         synced <= '0';
                     end if;
@@ -140,14 +135,16 @@ architecture rtl of project_reti_logiche is
                             CURRENT_PIXEL_VALUE  <= unsigned(i_data);--ce lo possiamo risparmiare, è per vedere meglio la simulazione
                             if unsigned(i_data) > MAX_PIXEL_VALUE then
                                 MAX_PIXEL_VALUE  <= unsigned(i_data);
-                            end if; --creo due if per gestire anche il caso in cui tutti i pixel 
-                                --sono uguali ( altrimenti max e min non verrebbero aggiornati entrambi correttamente)
+                            end if; 
+                            
                             if unsigned(i_data) < MIN_PIXEL_VALUE then
                                 MIN_PIXEL_VALUE  <= unsigned(i_data);
                             end if;
+                            
+                            o_address <= std_logic_vector(COUNTER);
                             COUNTER <= J + 1;
                             J <= COUNTER + 1;
-                            o_address <= std_logic_vector(COUNTER);
+                           
                             TOT_PIXEL <= K - 1;
                             K <= TOT_PIXEL - 1;
                         else 
@@ -194,6 +191,7 @@ architecture rtl of project_reti_logiche is
                         elsif  DELTA_VALUE="11111111" then
                             SHIFT_LEVEL <= 0;                                                               
                         end if;
+                        
                         state <= CALCULATENEWVALUE;
                         o_address <= std_logic_vector(COUNTER);
                         synced <= '0';
@@ -204,15 +202,16 @@ architecture rtl of project_reti_logiche is
                         synced <= '1';
                     else
                         if TOT_PIXEL > 0 then
-                        -- controllare per sicurezza
                             BEFORE_SHIFT <= unsigned(i_data) - MIN_PIXEL_VALUE;
                             TEMP_PIXEL <= shift_left((unsigned(i_data) - MIN_PIXEL_VALUE), SHIFT_LEVEL);
                             TOT_PIXEL <= K - 1;
                             K <= TOT_PIXEL - 1;
+                            
+                            o_address <= std_logic_vector(COUNTER + TOT_PIXEL_ORIGINAL );
                             COUNTER <= J + 1;
                             J <= COUNTER + 1;
-                            state <= HASOVERFLOWED; 
-                            o_address <= std_logic_vector(COUNTER + TOT_PIXEL_ORIGINAL );
+                            
+                            state <= HASOVERFLOWED;
                         else 
                             state <= DONE;
                         end if;
@@ -314,12 +313,5 @@ architecture rtl of project_reti_logiche is
                 
                 end if;
             end if;
-            
-          --  if rising_edge(i_clk) and synced = '0' then
-            --    J <= COUNTER;
-              --  K <= TOT_PIXEL;
-                --synced <= '1';
-           -- end if; 
         end process;
-   
 end architecture;
