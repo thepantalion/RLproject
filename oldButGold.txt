@@ -101,7 +101,7 @@ architecture rtl of project_reti_logiche is
                 
                 elsif state = MAXMIN then
                     if TOT_PIXEL > 0 then
-                        CURRENT_PIXEL_VALUE  <= unsigned(i_data);--ce lo possiamo risparmiare, è per vedere meglio la simulazione
+                        CURRENT_PIXEL_VALUE  <= unsigned(i_data);--ce lo possiamo risparmiare, Ã¨ per vedere meglio la simulazione
                         if unsigned(i_data) > MAX_PIXEL_VALUE then
                             MAX_PIXEL_VALUE  <= unsigned(i_data);
                         end if; --creo due if per gestire anche il caso in cui tutti i pixel 
