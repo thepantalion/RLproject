@@ -64,7 +64,6 @@ architecture rtl of project_reti_logiche is
                             OverFlow <= '0';
                             synced <= '0';
                             IsClean <= '1';
-                            report "initialized";
                             
                             state <= WAITING;
                         end if;
